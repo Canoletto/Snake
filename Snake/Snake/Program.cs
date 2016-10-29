@@ -11,13 +11,13 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            Console.SetBufferSize(250, 250);
+            Console.SetBufferSize(250, 100);
 
             // Отрисовка рамочки
             HorizontalLine upLine = new HorizontalLine(0, 78, 0, '+');
             HorizontalLine downLine = new HorizontalLine(0, 78, 24, '+');
             VerticalLine leftLine = new VerticalLine(0, 24, 0, '+');
-            VerticalLine rightLine = new VerticalLine(0, 24, 78, '+');
+            VerticalLine rightLine = new VerticalLine(0, 24, 75, '+');
             upLine.Drow();
             downLine.Drow();
             leftLine.Drow();
@@ -29,7 +29,7 @@ namespace Snake
             Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Drow();
 
-            FoodCreator foodCreator = new FoodCreator(250, 250, '$');
+            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
             Point food = foodCreator.CreateFood();
             food.Draw();
 
@@ -46,26 +46,13 @@ namespace Snake
                 }
 
                 Thread.Sleep(100);
-            }
 
-            // для наглядности несколько раз вызываем метод Move с задержкой
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key);
+                }
+            }
 
             Console.ReadLine();
         }

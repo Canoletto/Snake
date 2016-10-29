@@ -10,7 +10,7 @@ namespace Snake
     {
         int mapWidth;
         int mapHeight;
-        char sym
+        char sym;
 
         Random random = new Random();
 
