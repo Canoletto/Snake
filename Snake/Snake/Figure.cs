@@ -20,7 +20,7 @@ namespace Snake
 
         internal bool IsHit(Figure figure)
         {
-            foreach(var p in pList)
+            foreach (var p in pList)
             {
                 if (figure.IsHit(p))
                     return true;
@@ -30,7 +30,7 @@ namespace Snake
 
         private bool IsHit(Point point)
         {
-            foreach(var p in pList)
+            foreach (var p in pList)
             {
                 if (p.IsHit(point))
                     return true;
